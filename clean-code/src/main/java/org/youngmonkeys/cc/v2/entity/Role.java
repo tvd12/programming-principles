@@ -8,8 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.youngmonkeys.cc.v1.model.RoleName;
-
 import lombok.Getter;
 import lombok.Setter;
 

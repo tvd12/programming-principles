@@ -33,5 +33,4 @@ public class ApiAuthController {
         );
         return ResponseEntity.noContent();
     }
-
 }
