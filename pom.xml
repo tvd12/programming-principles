@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.tvd12</groupId>
+    <artifactId>ezyfox</artifactId>
+    <version>1.0.5</version>
+  </parent>
+  <groupId>org.youngmonkeys</groupId>
+  <artifactId>programming-principles</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <ezy.version>1.2.7</ezy.version>
+    <ezy.http.version>1.1.4</ezy.http.version>
+    <javax.persistence.version>2.2</javax.persistence.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.tvd12</groupId>
+      <artifactId>ezyhttp-server-boot</artifactId>
+      <version>${ezy.http.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.tvd12</groupId>
+      <artifactId>ezydata-jpa</artifactId>
+      <version>${ezy.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.persistence</groupId>
+      <artifactId>javax.persistence-api</artifactId>
+      <version>${javax.persistence.version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <modules>
+    <module>composition-over-inheritance</module>
+    <module>single-responsibility</module>
+    <module>open-close</module>
+    <module>liskov-substitution</module>
+    <module>interface-segregation</module>
+    <module>dependency-inversion</module>
+    <module>hourly-scheduler</module>
+    <module>keep-it-simple-stupid</module>
+    <module>write-dry-code</module>
+    <module>you-arent-going-to-need-it</module>
+    <module>separation-of-concerns</module>
+    <module>self-comment</module>
+    <module>document-your-code</module>
+    <module>clean-code</module>
+    <module>unit-test</module>
+    <module>log-strategy</module>
+    <module>sql-carefully</module>
+  </modules>
+</project>
