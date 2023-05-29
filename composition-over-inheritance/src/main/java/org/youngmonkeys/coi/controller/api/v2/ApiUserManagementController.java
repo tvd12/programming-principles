@@ -6,6 +6,7 @@ import org.youngmonkeys.coi.service.UserService;
 
 import com.tvd12.ezyhttp.server.core.annotation.Api;
 import com.tvd12.ezyhttp.server.core.annotation.Controller;
+import com.tvd12.ezyhttp.server.core.annotation.DoGet;
 import com.tvd12.ezyhttp.server.core.annotation.DoPut;
 
 @Api
@@ -19,7 +20,7 @@ public class ApiUserManagementController extends BaseUserController {
         super(userService, responseConverter);
     }
 
-    @DoPut("/user-management/latest-user")
+    @DoGet("/user-management/latest-user")
     public UserResponse userManagementLatestUserGet() {
         long latestUserId = userService.getLatestUserId();
         return getUserByIdToResponse(latestUserId);
