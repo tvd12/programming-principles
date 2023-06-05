@@ -5,7 +5,7 @@ import java.util.List;
 
 import lombok.Getter;
 
-public class LdapUserMigration extends Migrator {
+public class LdapUserMigrator extends Migrator {
 
     @Override
     protected void doMigrate() {
