@@ -27,7 +27,7 @@ public class UpdatedUserController {
         @PathVariable("uuid") String uuid
     ) {
         if (!apiVersion.equals("v1") &&
-            apiVersion.equals("v2")
+            !apiVersion.equals("v2")
         ) {
             throw new HttpNotFoundException(
                 singletonMap("api", "notFound")
