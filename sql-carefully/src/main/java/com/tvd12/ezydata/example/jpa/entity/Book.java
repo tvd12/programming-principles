@@ -1,7 +1,6 @@
 package com.tvd12.ezydata.example.jpa.entity;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,7 +35,7 @@ public class Book extends CommonEntity {
         if (this == o) {
             return true;
         }
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
+        if (!(o instanceof Book)) {
             return false;
         }
         Book book = (Book) o;

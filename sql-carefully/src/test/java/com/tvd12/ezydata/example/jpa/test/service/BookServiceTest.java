@@ -15,18 +15,15 @@ import com.tvd12.ezydata.example.jpa.repository.BookRepository;
 import com.tvd12.ezydata.example.jpa.repository.CategoryRepository;
 import com.tvd12.ezydata.example.jpa.service.BookService;
 import com.tvd12.test.util.RandomUtil;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.testng.annotations.Test;
 
 import java.time.LocalDateTime;
 
 import static com.tvd12.test.assertion.Asserts.*;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
 public class BookServiceTest {
 
     @Mock
