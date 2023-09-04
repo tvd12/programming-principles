@@ -23,7 +23,9 @@ public class UserService {
 
     public UserModel getUserById(long userId) {
         User user = userRepository.findById(userId);
-        long money = userWalletService.getUserMoney(userId);
+        long money = userWalletService
+            .getUserMoney(userId)
+            .blockingGet();
         return UserModel
             .builder()
             .id(userId)
