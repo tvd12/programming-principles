@@ -17,7 +17,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/refactoring-spring-web-mvc/api/v1/greet</url-pattern>
         <url-pattern>/api/v1/greet</url-pattern>
     </servlet-mapping>
 </web-app>
