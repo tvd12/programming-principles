@@ -11,10 +11,22 @@
 
   <artifactId>self-comment</artifactId>
 
-  <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
+  <dependencies>
+    <dependency>
+      <groupId>com.tvd12</groupId>
+      <artifactId>ezyhttp-server-boot</artifactId>
+      <version>${ezy.http.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.tvd12</groupId>
+      <artifactId>ezydata-jpa</artifactId>
+      <version>${ezy.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.persistence</groupId>
+      <artifactId>javax.persistence-api</artifactId>
+      <version>${javax.persistence.version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
 </project>

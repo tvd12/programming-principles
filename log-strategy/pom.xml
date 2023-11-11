@@ -21,6 +21,21 @@
       <artifactId>rxjava</artifactId>
       <version>${rxjava.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.tvd12</groupId>
+      <artifactId>ezyhttp-server-boot</artifactId>
+      <version>${ezy.http.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.tvd12</groupId>
+      <artifactId>ezydata-jpa</artifactId>
+      <version>${ezy.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.persistence</groupId>
+      <artifactId>javax.persistence-api</artifactId>
+      <version>${javax.persistence.version}</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
-
 </project>

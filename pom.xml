@@ -15,29 +15,10 @@
   <packaging>pom</packaging>
 
   <properties>
-    <ezy.version>1.2.7</ezy.version>
-    <ezy.http.version>1.1.4</ezy.http.version>
+    <ezy.version>1.2.8</ezy.version>
+    <ezy.http.version>1.2.3</ezy.http.version>
     <javax.persistence.version>2.2</javax.persistence.version>
   </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>com.tvd12</groupId>
-      <artifactId>ezyhttp-server-boot</artifactId>
-      <version>${ezy.http.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.tvd12</groupId>
-      <artifactId>ezydata-jpa</artifactId>
-      <version>${ezy.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.persistence</groupId>
-      <artifactId>javax.persistence-api</artifactId>
-      <version>${javax.persistence.version}</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
 
   <modules>
     <module>composition-over-inheritance</module>
@@ -57,5 +38,7 @@
     <module>unit-test</module>
     <module>log-strategy</module>
     <module>sql-carefully</module>
+    <module>refactoring-spring-web-mvc</module>
+    <module>refactoring-spring-boot</module>
   </modules>
 </project>

@@ -15,8 +15,8 @@ import com.tvd12.ezydata.example.jpa.repository.BookRepository;
 import com.tvd12.ezydata.example.jpa.repository.CategoryRepository;
 import com.tvd12.ezydata.example.jpa.service.BookService;
 import com.tvd12.test.util.RandomUtil;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.LocalDateTime;
@@ -26,18 +26,37 @@ import static org.mockito.Mockito.*;
 
 public class BookServiceTest {
 
-    @Mock
     private AuthorRepository authorRepository;
-    @Mock
     private BookRepository bookRepository;
-    @Mock
     private CategoryRepository categoryRepository;
-    @Mock
     private EntityToDataConverter entityToDataConverter;
-    @Mock
     private DataToEntityConverter dataToEntityConverter;
-    @InjectMocks
     private BookService sut;
+
+    @BeforeMethod
+    public void setup() {
+        this.authorRepository = mock(AuthorRepository.class);
+        this.bookRepository = mock(BookRepository.class);
+        this.categoryRepository = mock(CategoryRepository.class);
+        this.entityToDataConverter = mock(EntityToDataConverter.class);
+        this.dataToEntityConverter = mock(DataToEntityConverter.class);
+        this.sut = new BookService(
+            authorRepository,
+            bookRepository,
+            categoryRepository,
+            entityToDataConverter,
+            dataToEntityConverter
+        );
+    }
+
+    @AfterMethod
+    public void veryfyAll() {
+        verifyNoMoreInteractions(authorRepository);
+        verifyNoMoreInteractions(bookRepository);
+        verifyNoMoreInteractions(categoryRepository);
+        verifyNoMoreInteractions(entityToDataConverter);
+        verifyNoMoreInteractions(dataToEntityConverter);
+    }
 
     @Test
     public void addBookSuccess() {
