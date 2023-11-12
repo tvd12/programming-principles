@@ -40,5 +40,6 @@
     <module>sql-carefully</module>
     <module>refactoring-spring-web-mvc</module>
     <module>refactoring-spring-boot</module>
+    <module>dont-forget-security</module>
   </modules>
 </project>

@@ -1,3 +1,5 @@
+.zip
+**.zip
 target/
 **/target/
 .idea/
