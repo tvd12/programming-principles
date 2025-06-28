@@ -4,13 +4,17 @@ import javax.servlet.annotation.WebServlet;
 import java.sql.*;
 
 @WebServlet("/login")
-public class SQLInjection {
+public class SQLInjectionPrevent {
 
     public static void main(String[] args) {
         String username = args[0];
         String password = args[1];
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "12345678");
+            Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/test",
+                "root",
+                "12345678"
+            );
             Statement stmt = conn.createStatement();
             String query = "SELECT * FROM users WHERE username = ?0 AND password = ?1";
             PreparedStatement preparedStatement = conn.prepareStatement(query);
