@@ -20,6 +20,11 @@
         </dependency>
         <dependency>
             <groupId>com.tvd12</groupId>
+            <artifactId>ezyhttp-server-thymeleaf</artifactId>
+            <version>${ezy.http.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tvd12</groupId>
             <artifactId>ezydata-jpa</artifactId>
             <version>${ezy.version}</version>
         </dependency>
@@ -28,6 +33,11 @@
             <artifactId>javax.persistence-api</artifactId>
             <version>${javax.persistence.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
         </dependency>
     </dependencies>
 </project>
