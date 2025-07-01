@@ -40,5 +40,6 @@
     <module>refactoring-spring-boot</module>
     <module>dont-forget-security</module>
       <module>copilot-example</module>
+      <module>code-smell</module>
   </modules>
 </project>
