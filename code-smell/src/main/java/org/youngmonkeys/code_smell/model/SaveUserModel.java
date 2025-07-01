@@ -6,8 +6,8 @@ import lombok.Getter;
 @Getter
 @Builder
 public class SaveUserModel {
-    private String username;
-    private String password;
-    private String displayName;
-    private String email;
+    private final String username;
+    private final String password;
+    private final String displayName;
+    private final String email;
 }
