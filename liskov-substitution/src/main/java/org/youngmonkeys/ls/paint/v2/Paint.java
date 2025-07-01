@@ -4,7 +4,6 @@ import org.youngmonkeys.ls.paint.Position;
 import org.youngmonkeys.ls.paint.Size;
 
 public class Paint {
-
     public void pain(Shape shape) {
         if (shape.isValid()) {
             System.out.println("paint: " + shape);
