@@ -45,15 +45,15 @@ public class UserService {
         void save(SaveUserModel model);
     }
 
-    private final Map<UserType, SaveUserCommand> saveUserCommands;
+    private Map<UserType, SaveUserCommand> saveUserCommands;
     {
         saveUserCommands = new HashMap<>();
         saveUserCommands.put(UserType.USER, this::saveNormalUser);
         saveUserCommands.put(UserType.ADMIN, this::saveAdminUser);
     }
 
-    private final Consumer<SaveUserModel> userCreatedCallback;
-    private final Consumer<SaveUserModel> userUpdatedCallback;
+    private final Consumer<SaveUserModel> userCreatedHandler;
+    private final Consumer<SaveUserModel> userUpdatedHandler;
     public void saveUserUserCommandDesignPattern(
         UserType userType,
         SaveUserModel model
@@ -66,15 +66,18 @@ public class UserService {
                 "Unsupported user type: " + userType
             );
         }
-        userCreatedCallback.accept(model);
-        userUpdatedCallback.accept(model);
+        // can throw exception
+        userCreatedHandler.accept(model);
+
+        // can throw exception
+        userUpdatedHandler.accept(model);
     }
 
-    private final List<Consumer<SaveUserModel>> callbacks =
+    private final List<Consumer<SaveUserModel>> handlers =
         new ArrayList<>();
 
-    public void addCallback(Consumer<SaveUserModel> callback) {
-        callbacks.add(callback);
+    public void addHandler(Consumer<SaveUserModel> handler) {
+        handlers.add(handler);
     }
 
     public void saveUserUserChainOfResponsibility(
@@ -89,7 +92,53 @@ public class UserService {
                 "Unsupported user type: " + userType
             );
         }
-        callbacks.forEach(it -> it.accept(model));
+        handlers.forEach(it -> it.accept(model));
+    }
+
+    public abstract class UserEventHandler {
+
+        protected UserEventHandler nextHandler;
+
+        public void setNextHandler(UserEventHandler handler) {
+            this.nextHandler = handler;
+        }
+
+        public abstract void handle(SaveUserModel model);
+    }
+
+    public class UserCreatedEventHandler extends UserEventHandler {
+        @Override
+        public void handle(SaveUserModel model) {
+            if (model.getEmail() == null) {
+                throw new IllegalArgumentException("email is null");
+            }
+            // do something
+            nextHandler.handle(model);
+        }
+    }
+
+    public class UserUpdatedEventHandler extends UserEventHandler {
+        @Override
+        public void handle(SaveUserModel model) {
+            // do something
+        }
+    }
+
+    public void saveUserUserChainOfResponsibility2(
+        UserType userType,
+        SaveUserModel model
+    ) {
+        SaveUserCommand command = saveUserCommands.get(userType);
+        if (command != null) {
+            command.save(model);
+        } else {
+            throw new IllegalArgumentException(
+                "Unsupported user type: " + userType
+            );
+        }
+        UserCreatedEventHandler userCreatedEventHandler = new UserCreatedEventHandler();
+        userCreatedEventHandler.setNextHandler(new UserUpdatedEventHandler());
+        userCreatedEventHandler.handle(model);
     }
 
     private void saveAdminUser(

@@ -5,6 +5,11 @@ import com.tvd12.ezyhttp.client.request.GetRequest;
 import com.tvd12.ezyhttp.server.core.annotation.Controller;
 import com.tvd12.ezyhttp.server.core.annotation.DoGet;
 import com.tvd12.ezyhttp.server.core.annotation.RequestParam;
+import lombok.AllArgsConstructor;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 
 @Controller("/api/v1")
 public class ApiFetchDataController {
@@ -19,5 +24,36 @@ public class ApiFetchDataController {
             new GetRequest()
                 .setURL(url)
         );
+    }
+
+    public enum ShapeType {
+        SQUARE,
+        RECTANGLE
+    }
+
+    @AllArgsConstructor
+    public static class Shape {
+        public ShapeType type;
+        public int side;
+        public int width;
+        public int height;
+    }
+
+    Map<ShapeType, Function<Shape, Integer>> functionByShapeType =
+        new HashMap<>();
+    {
+        functionByShapeType.put(
+            ShapeType.SQUARE,
+            (shape) -> shape.side * shape.side
+        );
+        functionByShapeType.put(
+            ShapeType.RECTANGLE,
+            (shape) -> shape.width * shape.height
+        );
+    }
+
+    public int calculate_area(Shape shape) {
+        Function<Shape, Integer> func = functionByShapeType.get(shape.type);
+        return func.apply(shape);
     }
 }

@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="AllTests">
+  <test name="All">
+    <packages>
+      <package name="org.youngmonkeys.jwordpress.test.repo" />
+      <package name="org.youngmonkeys.jwordpress.test.security" />
+    </packages>
+  </test>
+</suite>
