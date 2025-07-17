@@ -154,4 +154,24 @@ public class UserService {
         UserEntity entity = modelToEntityConverter.toEntity(model);
         userRepository.saveUser(entity);
     }
+
+    /*
+    public long saveMail(MailModel model, String status) {
+        long mailId = model.getId();
+        Mail entity = mailId > 0
+            ? mailRepository.findById(mailId)
+            : null;
+        if (mailId > 0 && entity == null) {
+            throw new ResourceNotFoundException("mail");
+        }
+        if (entity == null) {
+            entity = modelToEntityConverter.toEntity(model);
+        } else {
+            modelToEntityConverter.mergeToEntity(model, entity);
+        }
+        entity.setStatus(status);
+        mailRepository.save(entity);
+        return entity.getId();
+    }
+    */
 }
