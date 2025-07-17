@@ -46,7 +46,10 @@ public class SessionKeyExample {
         aesCipher.init(Cipher.ENCRYPT_MODE, decryptedSessionKey);
         byte[] encryptedMessage = aesCipher.doFinal(message.getBytes());
 
-        System.out.println("Encrypted message: " + Base64.getEncoder().encodeToString(encryptedMessage));
+        System.out.println(
+            "Encrypted message: " +
+                Base64.getEncoder().encodeToString(encryptedMessage)
+        );
 
         aesCipher.init(Cipher.DECRYPT_MODE, decryptedSessionKey);
         byte[] decryptedMessage = aesCipher.doFinal(encryptedMessage);
