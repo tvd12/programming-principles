@@ -4,7 +4,7 @@ import javax.servlet.annotation.WebServlet;
 import java.sql.*;
 
 @WebServlet("/login")
-public class SQLInjectionPrevent {
+public class SQLInjectionPreventByStatement {
 
     public static void main(String[] args) {
         String username = args[0];
