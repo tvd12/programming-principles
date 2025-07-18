@@ -7,6 +7,7 @@ import com.tvd12.ezyhttp.server.core.annotation.RequestBody;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Collections;
 import java.util.Map;
 
 @Controller
@@ -53,5 +54,42 @@ public class ShellController {
             .put("error", error)
             .put("exitCode", exitCode)
             .toMap();
+    }
+
+
+    public interface CommandHandler {
+        void execute(String[] arguments);
+    }
+
+    public static class HelloCommandHandler implements CommandHandler {
+        @Override
+        public void execute(String[] arguments) {
+            System.out.println("hello");
+        }
+    }
+
+    public static class WorldCommandHandler implements CommandHandler {
+        @Override
+        public void execute(String[] arguments) {
+            System.out.println("world");
+        }
+    }
+
+    private final Map<String, CommandHandler> handlerByCommandName =
+        EzyMapBuilder.mapBuilder()
+            .put("hello", HelloCommandHandler.class)
+            .put("world", WorldCommandHandler.class)
+            .toMap();
+
+    @DoPost("/prevent-shell")
+    public Map<String, String> preventShell(
+        @RequestBody Command request
+    ) {
+        CommandHandler handler = handlerByCommandName.get(request.getCommand());
+        if (handler != null) {
+            handler.execute(request.getArguments());
+            return Collections.singletonMap("ok", "true");
+        }
+        return Collections.singletonMap("ok", "false");
     }
 }
