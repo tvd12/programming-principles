@@ -14,7 +14,7 @@
  * limitations under the License.
 */
 
-package org.youngmonkeys.dfs.xss;
+package org.youngmonkeys.dfs.xss.exception;
 
 import lombok.Getter;
 

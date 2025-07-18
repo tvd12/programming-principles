@@ -12,6 +12,11 @@
     <groupId>org.example</groupId>
     <artifactId>dont-forget-security</artifactId>
 
+    <properties>
+        <tika.version>2.7.0</tika.version>
+        <mysql.version>8.0.33</mysql.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.tvd12</groupId>
@@ -42,7 +47,18 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>${tika.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>

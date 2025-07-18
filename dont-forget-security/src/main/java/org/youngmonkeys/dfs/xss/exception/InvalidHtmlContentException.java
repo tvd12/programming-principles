@@ -14,10 +14,11 @@
  * limitations under the License.
 */
 
-package org.youngmonkeys.dfs.xss;
+package org.youngmonkeys.dfs.xss.exception;
 
 import com.tvd12.ezyfox.util.EzyMapBuilder;
 import lombok.Getter;
+import org.youngmonkeys.dfs.xss.exception.BadRequestException;
 
 @Getter
 public class InvalidHtmlContentException extends BadRequestException {

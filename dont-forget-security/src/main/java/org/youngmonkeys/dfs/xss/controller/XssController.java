@@ -1,10 +1,10 @@
-package org.youngmonkeys.dfs.clickjacking.controller;
+package org.youngmonkeys.dfs.xss.controller;
 
 import com.tvd12.ezyfox.util.EzyLoggable;
 import com.tvd12.ezyhttp.server.core.annotation.Controller;
 import com.tvd12.ezyhttp.server.core.annotation.DoGet;
 import com.tvd12.ezyhttp.server.core.view.View;
-import org.youngmonkeys.dfs.xss.Htmls;
+import org.youngmonkeys.dfs.xss.util.Htmls;
 
 @Controller
 public class XssController extends EzyLoggable {

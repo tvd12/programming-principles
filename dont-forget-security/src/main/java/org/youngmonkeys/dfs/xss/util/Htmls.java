@@ -14,9 +14,10 @@
  * limitations under the License.
 */
 
-package org.youngmonkeys.dfs.xss;
+package org.youngmonkeys.dfs.xss.util;
 
 import com.tvd12.ezyfox.collect.Sets;
+import org.youngmonkeys.dfs.xss.exception.InvalidHtmlContentException;
 
 import java.util.ArrayDeque;
 import java.util.Collections;
