@@ -9,4 +9,5 @@ target/
 .settings/
 **/.settings/
 *.iml
+node-modules/
 
