@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Form</title>
+    <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>count <span id="count"></span></h1>
+<p>error: <span id="error"></span></p>
+<script>
+let count = 1;
+
+async function callApi(i) {
+    try {
+      const response = await fetch('/api/v1/limit-rate-request');
+      if (!response.ok) {
+        throw new Error(`Request ${i}: HTTP ${response.status} - ${response.statusText}`);
+      }
+      count++;
+      document.getElementById('count').textContent = count;
+    } catch (err) {
+      const errorEl = document.getElementById('error');
+      errorEl.textContent += err.message + '\n';
+    }
+}
+
+async function testLimitRate() {
+    for (let i = 1; i <= 20; i++) {
+      callApi(i);
+    }
+}
+
+testLimitRate();
+</script>
+</body>
+</html>
