@@ -1,9 +1,13 @@
 package org.youngmonkeys.dfs.xss.controller;
 
 import com.tvd12.ezyfox.util.EzyLoggable;
+import com.tvd12.ezyhttp.core.response.ResponseEntity;
 import com.tvd12.ezyhttp.server.core.annotation.Controller;
 import com.tvd12.ezyhttp.server.core.annotation.DoGet;
+import com.tvd12.ezyhttp.server.core.annotation.DoPost;
+import com.tvd12.ezyhttp.server.core.annotation.RequestBody;
 import com.tvd12.ezyhttp.server.core.view.View;
+import org.youngmonkeys.dfs.xss.request.ValidateHtmlRequest;
 import org.youngmonkeys.dfs.xss.util.Htmls;
 
 @Controller
@@ -27,5 +31,13 @@ public class XssController extends EzyLoggable {
             .template("xss")
             .addVariable("data", Htmls.escapeScriptTag(DATA))
             .build();
+    }
+
+    @DoPost("/validate-html")
+    public ResponseEntity validateHtmlPost(
+        @RequestBody ValidateHtmlRequest request
+    ) {
+        Htmls.validateHtmlContent(request.getHtml());
+        return ResponseEntity.noContent();
     }
 }
